@@ -33,6 +33,7 @@ class BarangController extends Controller
             ->count();
         $stokHabis = Barang::where('jumlah_stok', 0)->count();
         $totalBarang = Barang::count();
+        $totalKategori = Kategori::count();
 
         return view('barang.index', [
             'barangs' => $barangs,
@@ -40,6 +41,7 @@ class BarangController extends Controller
             'stokMenipis' => $stokMenipis,
             'stokHabis' => $stokHabis,
             'totalBarang' => $totalBarang,
+            'totalKategori' => $totalKategori,
         ]);
     }
 

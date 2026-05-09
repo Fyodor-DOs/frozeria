@@ -24,8 +24,11 @@ class KategoriController extends Controller
             ->orderBy('nama_kategori')
             ->get();
 
+        $totalKategori = Kategori::count();
+
         return view('kategori.index', [
             'kategoris' => $kategoris,
+            'totalKategori' => $totalKategori,
         ]);
     }
 

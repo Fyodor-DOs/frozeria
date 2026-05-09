@@ -12,7 +12,7 @@
     </div>
 
     <div class="row g-3 mb-4">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <div class="text-muted">Total Barang</div>
@@ -20,7 +20,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-muted">Total Kategori</div>
+                    <div class="display-6 fw-semibold">{{ $totalKategori }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <div class="text-muted">Stok Menipis (&lt; 20)</div>
@@ -28,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <div class="text-muted">Stok Habis</div>
