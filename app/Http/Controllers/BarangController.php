@@ -137,7 +137,7 @@ class BarangController extends Controller
 
         $barang->update($validated);
 
-        return redirect()->route('barang.show', $barang)->with('success', 'Barang berhasil diperbarui.');
+        return redirect()->route('dashboard')->with('success', 'Barang berhasil diperbarui.');
     }
 
     /**

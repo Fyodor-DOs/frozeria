@@ -10,9 +10,17 @@ class KategoriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
         $kategoris = Kategori::withCount('barangs')
+            ->when($search, function ($builder) use ($search) {
+                $builder->where(function ($query) use ($search) {
+                    $query->where('nama_kategori', 'like', '%' . $search . '%')
+                        ->orWhere('deskripsi', 'like', '%' . $search . '%');
+                });
+            })
             ->orderBy('nama_kategori')
             ->get();
 

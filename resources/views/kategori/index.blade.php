@@ -11,6 +11,16 @@
         <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Kategori</a>
     </div>
 
+    <form class="card p-3 mb-4" method="GET" action="{{ route('kategori.index') }}">
+        <div class=" align-items-end">
+            <label class="form-label" for="search">Cari Kategori</label>
+            <div class="input-group">
+                <input type="text" name="search" id="search" class="form-control" placeholder="Ketik nama atau deskripsi" value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit">Cari</button>
+            </div>
+        </div>
+    </form>
+
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
