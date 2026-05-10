@@ -5,8 +5,8 @@
 @section('content')
     <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
         <div>
-            <h1 class="h3 section-title mb-1">Dashboard - Daftar Barang</h1>
-            <p class="text-muted mb-0">Kelola stok makanan beku Frozeria dengan cepat.</p>
+            <h1 class="h3 section-title mb-1">Dashboard</h1>
+            <p class="text-muted mb-0">Daftar Barang</p>
         </div>
         <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah Barang</a>
     </div>
@@ -31,7 +31,7 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <div class="text-muted">Stok Menipis (&lt; 20)</div>
+                    <div class="text-muted">Stok Menipis</div>
                     <div class="display-6 fw-semibold text-warning">{{ $stokMenipis }}</div>
                 </div>
             </div>
