@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class BarangController extends Controller
 {
@@ -64,12 +65,12 @@ class BarangController extends Controller
             'nama_barang' => 'required|string|max:255',
             'kategori_id' => 'nullable|exists:kategoris,id',
             'jumlah_stok' => 'required|integer|min:0',
-            'stok_minimum' => 'nullable|integer|min:0',
-            'satuan' => 'required|string|max:50',
+            'stok_minimum' => 'required|integer|min:20',
+            'satuan' => ['required', 'string', Rule::in(['pcs', 'pack', 'box'])],
             'harga_beli' => 'required|numeric|min:0',
             'harga_jual' => 'required|numeric|min:0',
             'berat_ukuran' => 'nullable|string|max:100',
-            'lokasi_simpan' => 'nullable|string|max:255',
+            'lokasi_simpan' => 'nullable|string|max:255|unique:barangs,lokasi_simpan',
             'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
@@ -119,12 +120,17 @@ class BarangController extends Controller
             'nama_barang' => 'required|string|max:255',
             'kategori_id' => 'nullable|exists:kategoris,id',
             'jumlah_stok' => 'required|integer|min:0',
-            'stok_minimum' => 'nullable|integer|min:0',
-            'satuan' => 'required|string|max:50',
+            'stok_minimum' => 'required|integer|min:20',
+            'satuan' => ['required', 'string', Rule::in(['pcs', 'pack', 'box'])],
             'harga_beli' => 'required|numeric|min:0',
             'harga_jual' => 'required|numeric|min:0',
             'berat_ukuran' => 'nullable|string|max:100',
-            'lokasi_simpan' => 'nullable|string|max:255',
+            'lokasi_simpan' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::unique('barangs', 'lokasi_simpan')->ignore($barang->id),
+            ],
             'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);

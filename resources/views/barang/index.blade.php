@@ -93,7 +93,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     <div class="fw-semibold">{{ $barang->nama_barang }}</div>
-                                    <div class="text-muted small">{{ $barang->berat_ukuran ?? '-' }}</div>
+                                    <div class="text-muted small">{{ $barang->berat_ukuran ?? '-' }} gram</div>
                                 </td>
                                 <td>
                                     @if ($barang->kategori)

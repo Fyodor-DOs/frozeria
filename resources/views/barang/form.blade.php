@@ -1,9 +1,9 @@
 <div class="row g-3">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label class="form-label" for="nama_barang">Nama Barang</label>
         <input type="text" class="form-control" id="nama_barang" name="nama_barang" value="{{ old('nama_barang', $barang->nama_barang ?? '') }}" required>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label class="form-label" for="kategori_id">Kategori</label>
         <select class="form-select" id="kategori_id" name="kategori_id">
             <option value="">Pilih kategori</option>
@@ -20,25 +20,39 @@
     </div>
     <div class="col-md-4">
         <label class="form-label" for="stok_minimum">Stok Minimum</label>
-        <input type="number" class="form-control" id="stok_minimum" name="stok_minimum" value="{{ old('stok_minimum', $barang->stok_minimum ?? 0) }}" min="0">
+        <input type="number" class="form-control" id="stok_minimum" name="stok_minimum" value="{{ old('stok_minimum', $barang->stok_minimum ?? 20) }}" min="20" required>
     </div>
     <div class="col-md-4">
         <label class="form-label" for="satuan">Satuan</label>
-        <input type="text" class="form-control" id="satuan" name="satuan" value="{{ old('satuan', $barang->satuan ?? '') }}" required>
+        <select class="form-select" id="satuan" name="satuan" required>
+            <option value="">Pilih satuan</option>
+            <option value="pcs" {{ old('satuan', $barang->satuan ?? '') === 'pcs' ? 'selected' : '' }}>pcs</option>
+            <option value="pack" {{ old('satuan', $barang->satuan ?? '') === 'pack' ? 'selected' : '' }}>pack</option>
+            <option value="box" {{ old('satuan', $barang->satuan ?? '') === 'box' ? 'selected' : '' }}>box</option>
+        </select>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label class="form-label" for="harga_beli">Harga Beli</label>
-        <input type="number" class="form-control" id="harga_beli" name="harga_beli" value="{{ old('harga_beli', $barang->harga_beli ?? 0) }}" min="0" step="0.01" required>
+        <div class="input-group">
+            <span class="input-group-text">Rp</span>
+            <input type="number" class="form-control" id="harga_beli" name="harga_beli" value="{{ old('harga_beli', $barang->harga_beli ?? 0) }}" min="0" step="0.01" required>
+        </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label class="form-label" for="harga_jual">Harga Jual</label>
-        <input type="number" class="form-control" id="harga_jual" name="harga_jual" value="{{ old('harga_jual', $barang->harga_jual ?? 0) }}" min="0" step="0.01" required>
+        <div class="input-group">
+            <span class="input-group-text">Rp</span>
+            <input type="number" class="form-control" id="harga_jual" name="harga_jual" value="{{ old('harga_jual', $barang->harga_jual ?? 0) }}" min="0" step="0.01" required>
+        </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label class="form-label" for="berat_ukuran">Berat / Ukuran</label>
-        <input type="text" class="form-control" id="berat_ukuran" name="berat_ukuran" value="{{ old('berat_ukuran', $barang->berat_ukuran ?? '') }}">
+        <div class="input-group">
+            <input type="text" class="form-control" id="berat_ukuran" name="berat_ukuran" value="{{ old('berat_ukuran', $barang->berat_ukuran ?? '') }}">
+            <span class="input-group-text">gram</span>
+        </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label class="form-label" for="lokasi_simpan">Lokasi Simpan</label>
         <input type="text" class="form-control" id="lokasi_simpan" name="lokasi_simpan" value="{{ old('lokasi_simpan', $barang->lokasi_simpan ?? '') }}">
     </div>

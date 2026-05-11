@@ -1,5 +1,5 @@
 <div class="row g-3">
-    <div class="col-md-6">
+    <div class="col-12">
         <label class="form-label" for="nama_kategori">Nama Kategori</label>
         <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" value="{{ old('nama_kategori', $kategori->nama_kategori ?? '') }}" required>
     </div>
