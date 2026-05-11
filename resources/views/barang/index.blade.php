@@ -11,6 +11,8 @@
         <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah Barang</a>
     </div>
 
+    @include('partials.flash')
+
     <div class="row g-3 mb-4">
         <div class="col-md-3">
             <div class="card">
@@ -108,7 +110,7 @@
                                         if ($barang->jumlah_stok == 0) {
                                             $stokClass = 'bg-danger';
                                         } elseif ($barang->jumlah_stok < 20) {
-                                            $stokClass = 'bg-warning text-dark';
+                                            $stokClass = 'bg-warning text-white';
                                         }
                                     @endphp
                                     <span class="badge {{ $stokClass }}">{{ $barang->jumlah_stok }}</span>
@@ -116,7 +118,7 @@
                                 <td>{{ $barang->satuan }}</td>
                                 <td>Rp {{ number_format($barang->harga_jual, 0, ',', '.') }}</td>
                                 <td class="text-end">
-                                    <div class="btn-group" role="group">
+                                    <div class="d-inline-flex gap-2 flex-wrap">
                                         <a href="{{ route('barang.show', $barang) }}" class="btn btn-outline-primary btn-sm">Detail</a>
                                         <a href="{{ route('barang.edit', $barang) }}" class="btn btn-outline-secondary btn-sm">Edit</a>
                                         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-action="{{ route('barang.destroy', $barang) }}" data-name="{{ $barang->nama_barang }}">Hapus</button>

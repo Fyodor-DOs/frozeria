@@ -71,8 +71,8 @@ class BarangController extends Controller
             'harga_jual' => 'required|numeric|min:0',
             'berat_ukuran' => 'required|string|max:100',
             'lokasi_simpan' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'deskripsi' => 'required|string',
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($request->hasFile('foto')) {

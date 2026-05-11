@@ -8,9 +8,7 @@
             <h1 class="h3 section-title mb-1">Detail Barang</h1>
             <p class="text-muted mb-0">Informasi rinci untuk {{ $barang->nama_barang }}.</p>
         </div>
-        <div class="d-flex gap-2">
-            <a href="{{ route('barang.edit', $barang) }}" class="btn btn-outline-secondary">Edit</a>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-action="{{ route('barang.destroy', $barang) }}" data-name="{{ $barang->nama_barang }}">Hapus</button>
+        <div>
             <a href="{{ route('dashboard') }}" class="btn btn-primary">Kembali</a>
         </div>
     </div>
@@ -42,6 +40,9 @@
                         <dt class="col-sm-4">Jumlah Stok</dt>
                         <dd class="col-sm-8">{{ $barang->jumlah_stok }}</dd>
 
+                        <dt class="col-sm-4">Stok Minimum</dt>
+                        <dd class="col-sm-8">{{ $barang->stok_minimum }}</dd>
+
                         <dt class="col-sm-4">Satuan</dt>
                         <dd class="col-sm-8">{{ $barang->satuan }}</dd>
 
@@ -65,44 +66,4 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Konfirmasi Hapus</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus <span class="fw-semibold" id="deleteItemName">data ini</span>?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
-                    <form method="POST" action="" id="deleteForm">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Ya, Hapus</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
-
-@push('scripts')
-    <script>
-        const deleteModal = document.getElementById('deleteModal');
-        if (deleteModal) {
-            deleteModal.addEventListener('show.bs.modal', (event) => {
-                const button = event.relatedTarget;
-                const action = button.getAttribute('data-action');
-                const name = button.getAttribute('data-name');
-
-                const nameTarget = deleteModal.querySelector('#deleteItemName');
-                const form = deleteModal.querySelector('#deleteForm');
-
-                nameTarget.textContent = name || 'data ini';
-                form.action = action;
-            });
-        }
-    </script>
-@endpush

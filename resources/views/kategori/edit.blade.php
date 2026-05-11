@@ -11,6 +11,8 @@
         <a href="{{ route('kategori.index') }}" class="btn btn-outline-secondary">Kembali</a>
     </div>
 
+    @include('partials.flash')
+
     <div class="card">
         <div class="card-body">
             <form action="{{ route('kategori.update', $kategori) }}" method="POST">

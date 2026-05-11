@@ -11,6 +11,8 @@
         <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Kategori</a>
     </div>
 
+    @include('partials.flash')
+
     <form class="card p-3 mb-4" method="GET" action="{{ route('kategori.index') }}">
         <div class=" align-items-end">
             <label class="form-label" for="search">Cari Kategori</label>
@@ -42,7 +44,7 @@
                                 <td>{{ $kategori->deskripsi ?? '-' }}</td>
                                 <td>{{ $kategori->barangs_count }}</td>
                                 <td class="text-end">
-                                    <div class="btn-group" role="group">
+                                    <div class="d-inline-flex gap-2 flex-wrap">
                                         <a href="{{ route('kategori.edit', $kategori) }}" class="btn btn-outline-secondary btn-sm">Edit</a>
                                         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-action="{{ route('kategori.destroy', $kategori) }}" data-name="{{ $kategori->nama_kategori }}">Hapus</button>
                                     </div>
