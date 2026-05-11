@@ -103,7 +103,15 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <span class="fw-semibold">{{ $barang->jumlah_stok }}</span>
+                                    @php
+                                        $stokClass = 'bg-success';
+                                        if ($barang->jumlah_stok == 0) {
+                                            $stokClass = 'bg-danger';
+                                        } elseif ($barang->jumlah_stok < 20) {
+                                            $stokClass = 'bg-warning text-dark';
+                                        }
+                                    @endphp
+                                    <span class="badge {{ $stokClass }}">{{ $barang->jumlah_stok }}</span>
                                 </td>
                                 <td>{{ $barang->satuan }}</td>
                                 <td>Rp {{ number_format($barang->harga_jual, 0, ',', '.') }}</td>

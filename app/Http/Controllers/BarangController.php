@@ -63,14 +63,14 @@ class BarangController extends Controller
     {
         $validated = $request->validate([
             'nama_barang' => 'required|string|max:255',
-            'kategori_id' => 'nullable|exists:kategoris,id',
+            'kategori_id' => 'required|exists:kategoris,id',
             'jumlah_stok' => 'required|integer|min:0',
             'stok_minimum' => 'required|integer|min:20',
             'satuan' => ['required', 'string', Rule::in(['pcs', 'pack', 'box'])],
             'harga_beli' => 'required|numeric|min:0',
             'harga_jual' => 'required|numeric|min:0',
-            'berat_ukuran' => 'nullable|string|max:100',
-            'lokasi_simpan' => 'nullable|string|max:255|unique:barangs,lokasi_simpan',
+            'berat_ukuran' => 'required|string|max:100',
+            'lokasi_simpan' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
@@ -118,19 +118,14 @@ class BarangController extends Controller
 
         $validated = $request->validate([
             'nama_barang' => 'required|string|max:255',
-            'kategori_id' => 'nullable|exists:kategoris,id',
+            'kategori_id' => 'required|exists:kategoris,id',
             'jumlah_stok' => 'required|integer|min:0',
             'stok_minimum' => 'required|integer|min:20',
             'satuan' => ['required', 'string', Rule::in(['pcs', 'pack', 'box'])],
             'harga_beli' => 'required|numeric|min:0',
             'harga_jual' => 'required|numeric|min:0',
-            'berat_ukuran' => 'nullable|string|max:100',
-            'lokasi_simpan' => [
-                'nullable',
-                'string',
-                'max:255',
-                Rule::unique('barangs', 'lokasi_simpan')->ignore($barang->id),
-            ],
+            'berat_ukuran' => 'required|string|max:100',
+            'lokasi_simpan' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);

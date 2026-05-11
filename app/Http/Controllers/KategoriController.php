@@ -84,7 +84,7 @@ class KategoriController extends Controller
 
         $validated = $request->validate([
             'nama_kategori' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
+            'deskripsi' => 'required|string',
         ]);
 
         $kategori->update($validated);
